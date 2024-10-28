@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import BlogPost from '../../components/BlogPost.astro';
 
-const posts = await Astro.glob('./posts/*.md');
+const posts = await Astro.glob('./posts/*.mdx');
 posts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
 ---
 

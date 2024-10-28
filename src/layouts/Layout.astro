@@ -2,6 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -21,12 +22,28 @@ const { title } = Astro.props;
 	<meta name="generator" content={Astro.generator} />
 	<title>{title}</title>
 	<ViewTransitions />
+	<script is:inline>
+		function applyTheme() {
+			if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		}
+		// Apply theme on initial load
+		applyTheme();
+		// Listen for astro:after-swap event for view transitions
+		document.addEventListener('astro:after-swap', applyTheme);
+	</script>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-100">
+<body class="flex flex-col min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
 <Navigation />
 <main class="flex-grow container mx-auto px-4 py-8">
 	<slot />
 </main>
 <Footer />
+<div class="fixed bottom-5 right-5">
+	<ThemeSwitcher />
+</div>
 </body>
 </html>
