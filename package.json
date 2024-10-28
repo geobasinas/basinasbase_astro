@@ -22,7 +22,6 @@
     "astro": "^4.16.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.454.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.5.4",
@@ -32,6 +31,7 @@
   },
   "devDependencies": {
     "@formspree/react": "^2.5.1",
-    "@tailwindcss/typography": "^0.5.15"
+    "@tailwindcss/typography": "^0.5.15",
+    "lucide-react": "^0.454.0"
   }
 }

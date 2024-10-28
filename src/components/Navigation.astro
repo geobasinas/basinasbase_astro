@@ -1,10 +1,14 @@
 ---
+import { Menu, X } from 'lucide-react';
+
 const navItems = [
   { href: '/', text: 'Home' },
   { href: '/about', text: 'About' },
   { href: '/contact', text: 'Contact' },
   { href: '/blog', text: 'Blog' },
 ];
+
+// Add client-side interactivity
 ---
 
 <nav class="bg-slate-50 dark:bg-gray-800">
@@ -13,9 +17,41 @@ const navItems = [
       <div class="text-xl font-semibold text-gray-700 dark:text-white">
         <a href="/">BasinasBase</a>
       </div>
-      <div class="flex space-x-4">
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex space-x-4">
         {navItems.map((item) => (
-            <a href={item.href} class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition duration-300">
+            <a
+                href={item.href}
+                class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition duration-300"
+            >
+              {item.text}
+            </a>
+        ))}
+      </div>
+
+      <!-- Mobile Navigation Button -->
+      <button
+          id="mobile-menu-button"
+          class="md:hidden text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+          aria-label="Toggle menu"
+      >
+        <Menu id="menu-icon" className="h-6 w-6 block" />
+        <X id="close-icon" className="h-6 w-6 hidden" />
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+        id="mobile-menu"
+        class="hidden md:hidden mt-4 pb-4"
+    >
+      <div class="flex flex-col space-y-3">
+        {navItems.map((item) => (
+            <a
+                href={item.href}
+                class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition duration-300"
+            >
               {item.text}
             </a>
         ))}
@@ -23,3 +59,19 @@ const navItems = [
     </div>
   </div>
 </nav>
+
+<script>
+  // Add client-side JavaScript for menu toggling
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+  }
+</script>
