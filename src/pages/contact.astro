@@ -7,18 +7,23 @@ import { Textarea } from '@/components/ui/textarea';
 
 <Layout title="Contact | Your Name">
   <h1 class="text-4xl font-bold mb-8">Contact Me</h1>
-  <form class="max-w-md mx-auto space-y-6">
+  <form 
+    class="max-w-md mx-auto space-y-6" 
+    method="post" 
+    action="https://usebasin.com/f/8800df7d4724"
+    data-redirect="/thanks"
+  >
     <div>
-      <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
-      <Input type="text" id="name" name="name" required />
+      <label for="name" id="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+      <Input type="text" id="name" name="name" />
     </div>
     <div>
-      <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
-      <Input type="email" id="email" name="email" required />
+      <label for="email" id="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+      <Input type="email" id="email" name="email"/>
     </div>
     <div>
-      <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
-      <Textarea id="message" name="message" rows={4} required />
+      <label for="message" id="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+      <Textarea id="message" name="message" rows={4}/>
     </div>
     <Button type="submit" className="w-full">Send Message</Button>
   </form>
