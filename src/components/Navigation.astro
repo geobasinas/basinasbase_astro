@@ -1,0 +1,25 @@
+---
+const navItems = [
+  { href: '/', text: 'Home' },
+  { href: '/about', text: 'About' },
+  { href: '/contact', text: 'Contact' },
+  { href: '/blog', text: 'Blog' },
+];
+---
+
+<nav class="bg-white shadow">
+  <div class="container mx-auto px-6 py-3">
+    <div class="flex justify-between items-center">
+      <div class="text-xl font-semibold text-gray-700">
+        <a href="/">Your Name</a>
+      </div>
+      <div class="flex space-x-4">
+        {navItems.map((item) => (
+            <a href={item.href} class="text-gray-700 hover:text-blue-500 transition duration-300">
+              {item.text}
+            </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</nav>
