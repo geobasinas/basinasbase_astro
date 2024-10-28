@@ -6,6 +6,42 @@ interface Props {
 }
 
 const { title, date, url } = Astro.props;
+
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+
+  // Format date as "Month DD, YYYY"
+  const formatted = date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+  // Calculate time ago
+  const now = new Date();
+  const diffTime = Math.abs(now.getTime() - date.getTime());
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  let timeAgo;
+  if (diffDays === 1) {
+    timeAgo = 'yesterday';
+  } else if (diffDays < 30) {
+    timeAgo = `${diffDays} days ago`;
+  } else if (diffDays < 365) {
+    const months = Math.floor(diffDays / 30);
+    timeAgo = `${months} ${months === 1 ? 'month' : 'months'} ago`;
+  } else {
+    const years = Math.floor(diffDays / 365);
+    timeAgo = `${years} ${years === 1 ? 'year' : 'years'} ago`;
+  }
+
+  return {
+    formatted,
+    timeAgo
+  };
+}
+
+const { formatted, timeAgo } = formatDate(date);
 ---
 
 <div class="mb-8">
@@ -14,5 +50,13 @@ const { title, date, url } = Astro.props;
       {title}
     </a>
   </h2>
-  <p class="text-gray-600 dark:text-gray-400">{date}</p>
+  <div class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+    <time datetime={date} class="font-medium">
+      {formatted}
+    </time>
+    <span class="text-gray-400 dark:text-gray-500">•</span>
+    <span class="italic">
+      {timeAgo}
+    </span>
+  </div>
 </div>

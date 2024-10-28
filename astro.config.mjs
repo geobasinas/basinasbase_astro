@@ -11,5 +11,14 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   integrations: [tailwind({
     applyBaseStyles: false,
-  }), react(), mdx()]
+  }), react(), mdx({
+    syntaxHighlight: 'shiki',
+    shikiConfig: {
+      theme:"everforest-dark",
+      // Disable the default colors
+      // https://shiki.style/guide/dual-themes#without-default-color
+      // (Added in v4.12.0)
+      defaultColor: false,
+    }
+  })]
 });
