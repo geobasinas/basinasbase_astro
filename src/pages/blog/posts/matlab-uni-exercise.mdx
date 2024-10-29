@@ -17,15 +17,18 @@ Our goal is to visualize the vector equation:
 
 I started by defining three vectors in MATLAB:
 
+```matlab
 % Define the vectors
 u = [-3, 2];
 v = [2, -1];
 w = [1, -2];
+```
 
 Step 1: Scaling the Vectors
 
 In this equation, vector v is scaled by 3, and vector w is scaled by -2. These transformations change the direction and magnitude of the vectors, which we'll see in the plot.
 
+```matlab
 % Calculate the scaled vectors
 scaled_v = 3 * v;
 scaled_w = -2 * w;
@@ -34,11 +37,13 @@ After scaling, I calculate the final result by adding u, 3v, and -2w:
 
 % Calculate the result vector
 result = u + scaled_v + scaled_w;
+```
 
 Step 2: Setting Up the Plot
 
 The next part of the script sets up the plot area. Here, I make sure the plot has equal axis scaling, a grid for clarity, and appropriate axis labels and title.
 
+```matlab
 % Set up the plot
 figure;
 hold on;
@@ -49,6 +54,7 @@ set(gca, 'GridColor', [0.8, 0.8, 0.8], 'GridAlpha', 0.7); % light gray grid
 xlabel('X', 'FontSize', 12);
 ylabel('Y', 'FontSize', 12);
 title('Vector Plot of u + 3v - 2w', 'FontSize', 14, 'FontWeight', 'bold');
+```
 
 Step 3: Plotting the Vectors
 
@@ -62,7 +68,7 @@ Scaled vector -2w is in blue.
 
 The resulting vector (u + 3v - 2w) is plotted in a dark purple for emphasis.
 
-
+```matlab
 % Plot vector u
 quiver(0, 0, u(1), u(2), 0, 'Color', [0.85, 0.33, 0.1], 'LineWidth', 1.5, 'MaxHeadSize', 0.5);
 text(u(1) * 1.1, u(2) * 1.1, 'u', 'Color', [0.85, 0.33, 0.1], 'FontSize', 12, 'FontWeight', 'bold');
@@ -78,14 +84,17 @@ text(scaled_w(1) * 1.1, scaled_w(2) * 1.1, '-2w', 'Color', [0.3, 0.4, 0.9], 'Fon
 % Plot the resulting vector
 quiver(0, 0, result(1), result(2), 0, 'Color', [0.5, 0, 0.5], 'LineWidth', 2, 'MaxHeadSize', 0.5);
 text(result(1) * 1.1, result(2) * 1.1, 'u + 3v - 2w', 'Color', [0.5, 0, 0.5], 'FontSize', 12, 'FontWeight', 'bold');
+```
 
 Step 4: Adding a Legend
 
 To clearly label each vector, I added a legend that shows the vector names and colors:
 
+```matlab
 % Add a legend
 legend({'u', '3v', '-2w', 'u + 3v - 2w'}, 'TextColor', 'black', 'FontSize', 10, 'Location', 'northeast');
 hold off;
+```
 
 The Final Output
 
