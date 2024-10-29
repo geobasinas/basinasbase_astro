@@ -61,16 +61,24 @@ const navItems = [
 </nav>
 
 <script>
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-  const closeIcon = document.getElementById('close-icon');
+  function initializeMenu() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
 
-  if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      menuIcon.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
-    });
+    if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
   }
+
+  // Initialize menu on initial load
+  initializeMenu();
+
+  // Reinitialize menu after each page load
+  document.addEventListener('astro:after-swap', initializeMenu);
 </script>
