@@ -10,46 +10,6 @@ A quadratic equation is an equation in the form ax² + bx + c = 0, where a, b, a
 ## The Code
 
 ```python
-def solve_quadratic():
-    print("Quadratic Equation Solver (ax² + bx + c = 0)")
-    print("-------------------------------------------")
-
-    try:
-        a = float(input("Enter coefficient a: "))
-        b = float(input("Enter coefficient b: "))
-        c = float(input("Enter coefficient c: "))
-
-        if a == 0:
-            print("This is not a quadratic equation as 'a' cannot be zero")
-            return
-
-        # Calculate discriminant
-        discriminant = b*b - 4*a*c
-
-        if discriminant < 0:
-            print("The equation has no real solutions")
-            return
-
-        # Calculate solutions using quadratic formula
-        sqrt_discriminant = discriminant ** 0.5
-        denominator = 2*a
-
-        x1 = (-b + sqrt_discriminant) / denominator
-        x2 = (-b - sqrt_discriminant) / denominator
-
-        if x1 == x2:
-            print(f"The equation has one solution: x = {x1:.2f}")
-        else:
-            print(f"The solutions are: x₁ = {x1:.2f} and x₂ = {x2:.2f}")
-
-    except ValueError as e:
-        print(f"Error: Please enter valid numbers")
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
-
-if __name__ == "__main__":
-    solve_quadratic()
-```
 
 ## How It Works
 
@@ -93,7 +53,7 @@ Enter coefficient a: 1
 Enter coefficient b: 0
 Enter coefficient c: 1
 The equation has no real solutions
-   ```
+```
 
 ## Error Handling
 
