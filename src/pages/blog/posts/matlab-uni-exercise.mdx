@@ -1,0 +1,99 @@
+---
+layout: ../../../layouts/BlogPostLayout.astro
+title: Solving Quadratic Equations in Python
+date: 2024-10-29
+---
+Blog Post: Visualizing Vector Operations in MATLAB – A Step-by-Step Guide
+
+Posted on [Date]
+
+Hello everyone! Today, I wanted to share a MATLAB assignment I recently completed as part of my university coursework. The task was to create a script that demonstrates vector manipulation visually. I’m excited to walk you through the code and explain each step. By the end, you'll see how to use MATLAB to plot vectors and scale them, then combine them into a single resulting vector.
+
+Problem Setup: Defining the Vectors
+
+Our goal is to visualize the vector equation:
+
+\textbf{u} + 3\textbf{v} - 2\textbf{w}
+
+I started by defining three vectors in MATLAB:
+
+% Define the vectors
+u = [-3, 2];
+v = [2, -1];
+w = [1, -2];
+
+Step 1: Scaling the Vectors
+
+In this equation, vector v is scaled by 3, and vector w is scaled by -2. These transformations change the direction and magnitude of the vectors, which we'll see in the plot.
+
+% Calculate the scaled vectors
+scaled_v = 3 * v;
+scaled_w = -2 * w;
+
+After scaling, I calculate the final result by adding u, 3v, and -2w:
+
+% Calculate the result vector
+result = u + scaled_v + scaled_w;
+
+Step 2: Setting Up the Plot
+
+The next part of the script sets up the plot area. Here, I make sure the plot has equal axis scaling, a grid for clarity, and appropriate axis labels and title.
+
+% Set up the plot
+figure;
+hold on;
+axis equal;
+grid on;
+axis([-5 10 -5 5]);
+set(gca, 'GridColor', [0.8, 0.8, 0.8], 'GridAlpha', 0.7); % light gray grid
+xlabel('X', 'FontSize', 12);
+ylabel('Y', 'FontSize', 12);
+title('Vector Plot of u + 3v - 2w', 'FontSize', 14, 'FontWeight', 'bold');
+
+Step 3: Plotting the Vectors
+
+In MATLAB, the quiver function is perfect for plotting vectors. I assigned each vector a distinct color for easy visualization:
+
+Vector u is in a soft red.
+
+Scaled vector 3v is in green.
+
+Scaled vector -2w is in blue.
+
+The resulting vector (u + 3v - 2w) is plotted in a dark purple for emphasis.
+
+
+% Plot vector u
+quiver(0, 0, u(1), u(2), 0, 'Color', [0.85, 0.33, 0.1], 'LineWidth', 1.5, 'MaxHeadSize', 0.5);
+text(u(1) * 1.1, u(2) * 1.1, 'u', 'Color', [0.85, 0.33, 0.1], 'FontSize', 12, 'FontWeight', 'bold');
+
+% Plot vector 3v
+quiver(0, 0, scaled_v(1), scaled_v(2), 0, 'Color', [0.2, 0.7, 0.3], 'LineWidth', 1.5, 'MaxHeadSize', 0.5);
+text(scaled_v(1) * 1.1, scaled_v(2) * 1.1, '3v', 'Color', [0.2, 0.7, 0.3], 'FontSize', 12, 'FontWeight', 'bold');
+
+% Plot vector -2w
+quiver(0, 0, scaled_w(1), scaled_w(2), 0, 'Color', [0.3, 0.4, 0.9], 'LineWidth', 1.5, 'MaxHeadSize', 0.5);
+text(scaled_w(1) * 1.1, scaled_w(2) * 1.1, '-2w', 'Color', [0.3, 0.4, 0.9], 'FontSize', 12, 'FontWeight', 'bold');
+
+% Plot the resulting vector
+quiver(0, 0, result(1), result(2), 0, 'Color', [0.5, 0, 0.5], 'LineWidth', 2, 'MaxHeadSize', 0.5);
+text(result(1) * 1.1, result(2) * 1.1, 'u + 3v - 2w', 'Color', [0.5, 0, 0.5], 'FontSize', 12, 'FontWeight', 'bold');
+
+Step 4: Adding a Legend
+
+To clearly label each vector, I added a legend that shows the vector names and colors:
+
+% Add a legend
+legend({'u', '3v', '-2w', 'u + 3v - 2w'}, 'TextColor', 'black', 'FontSize', 10, 'Location', 'northeast');
+hold off;
+
+The Final Output
+
+The final plot shows the original and scaled vectors originating from the same point, with the result vector summing the combined effect of u, 3v, and -2w. This visualization provides a clear insight into vector addition and scaling in two dimensions.
+
+Reflection
+
+Creating this MATLAB script was a great exercise in applying vector math to practical plotting. This process helped reinforce my understanding of vector scaling and addition while also improving my MATLAB coding skills.
+
+Let me know what you think about this project, and feel free to reach out if you have any questions about the script or the concepts. Happy coding!
+
