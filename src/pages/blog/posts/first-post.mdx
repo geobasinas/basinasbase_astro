@@ -3,65 +3,36 @@ layout: ../../../layouts/BlogPostLayout.astro
 title: Solving Quadratic Equations in Python
 date: 2024-10-28
 ---
-
-## Introduction
-A quadratic equation is an equation in the form ax² + bx + c = 0, where a, b, and c are real numbers and a ≠ 0. In this post, we'll create a simple Python program that solves quadratic equations by taking user input for the coefficients.
-
-## The Code
-
 ```python
+import math
 
-## How It Works
+# Input coefficients
+a = float(input("Enter coefficient a: "))
+b = float(input("Enter coefficient b: "))
+c = float(input("Enter coefficient c: "))
 
-1. **User Input**: The program prompts the user to enter three coefficients:
-- a: the coefficient of x²
-- b: the coefficient of x
-- c: the constant term
-
-2. **Validation**: The program checks if a = 0, which would make it a linear equation instead of quadratic.
-
-3. **Discriminant**: The program calculates the discriminant (b² - 4ac) which determines the nature of roots:
-- If discriminant < 0: No real solutions
-- If discriminant = 0: One real solution (repeated)
-- If discriminant > 0: Two distinct real solutions
-
-4. **Solution Calculation**: Using the quadratic formula (-b ± √(b² - 4ac))/(2a), the program calculates the solutions.
-
-## Example Usage
-
-Here are some example inputs and their outputs:
-
-1. **Two real solutions**:
+if a == 0:
+    # Not a quadratic equation, solve as a linear equation
+    if b != 0:
+        solution = -c / b
+        print(f"Linear equation solution: x = {solution}")
+    else:
+        print("No solution, since both a and b are 0.")
+else:
+    # Calculate the discriminant
+    discriminant = b**2 - 4*a*c
+    if discriminant > 0:
+        # Two distinct real roots
+        root1 = (-b + math.sqrt(discriminant)) / (2*a)
+        root2 = (-b - math.sqrt(discriminant)) / (2*a)
+        print(f"Two distinct real solutions: x1 = {root1}, x2 = {root2}")
+    elif discriminant == 0:
+        # One real root (double root)
+        root = -b / (2*a)
+        print(f"One real solution: x = {root}")
+    else:
+        # No real roots, two complex roots
+        real_part = -b / (2*a)
+        imaginary_part = math.sqrt(-discriminant) / (2*a)
+        print(f"Two complex solutions: x1 = {real_part} + {imaginary_part}i, x2 = {real_part} - {imaginary_part}i")
 ```
-Enter coefficient a: 1
-Enter coefficient b: 5
-Enter coefficient c: 6
-The solutions are: x₁ = -2.00 and x₂ = -3.00
-   ```
-
-2. **One real solution**:
-```
-Enter coefficient a: 1
-Enter coefficient b: 2
-Enter coefficient c: 1
-The equation has one solution: x = -1.00
-   ```
-
-3. **No real solutions**:
-```
-Enter coefficient a: 1
-Enter coefficient b: 0
-Enter coefficient c: 1
-The equation has no real solutions
-```
-
-## Error Handling
-
-The program includes basic error handling:
-- Checks for invalid inputs (non-numeric values)
-- Validates that 'a' is not zero
-- Handles general exceptions that might occur during execution
-
-## Conclusion
-
-This simple Python program efficiently solves quadratic equations using the quadratic formula. It handles all possible cases: no solutions, one solution, or two solutions, and provides user-friendly output formatting.
