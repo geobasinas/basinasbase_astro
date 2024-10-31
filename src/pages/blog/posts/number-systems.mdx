@@ -1,0 +1,183 @@
+---
+layout: ../../../layouts/BlogPostLayout.astro
+title: Conversion to decimal, hexadecimal and binary system
+date: 2024-10-31
+---
+Here's the MDX blog post with simplified code highlighting:
+
+# Guide to Converting Between Binary, Decimal, and Hexadecimal Systems
+
+Converting numbers between binary, decimal, and hexadecimal systems is essential in computer science. This guide covers conversion methods for each system, including cases with fractional parts.
+
+---
+
+## Converting Decimal Numbers to Binary
+
+### Method 1: Division by 2
+
+1. Divide the decimal number by 2.
+2. Record the remainder.
+3. Repeat until you reach 0.
+4. The binary result is the sequence of remainders read **bottom-to-top**.
+
+```plaintext
+Example: Convert 13 to binary:
+- 13 / 2 = 6, remainder 1
+- 6 / 2 = 3, remainder 0
+- 3 / 2 = 1, remainder 1
+- 1 / 2 = 0, remainder 1
+Result (bottom-to-top): 1101
+
+Method 2: Subtraction (Powers of 2)
+
+Find the largest power of 2 less than or equal to the decimal number. Write a 1 in that position, then continue for each remaining position.
+
+Example: For 13, powers are 2^3 (8), 2^2 (4), and 2^0 (1).
+Result: 1101
+
+
+---
+
+Converting Binary to Decimal
+
+Method: Sum of Powers of 2
+
+Each binary digit represents a power of 2. Multiply each bit by 2^n where n is the position, starting from the right at n=0. Add the results.
+
+Example: Convert 1101 to decimal:
+1 x 2^3 + 1 x 2^2 + 0 x 2^1 + 1 x 2^0 = 13
+
+
+---
+
+Converting Decimal Numbers to Hexadecimal
+
+Method 1: Division by 16
+
+1. Divide the decimal number by 16.
+
+
+2. Record the remainder, using hexadecimal digits (0-9 and A-F for values 10-15).
+
+
+3. Repeat until you reach 0.
+
+
+4. Read remainders bottom-to-top.
+
+
+
+Example: Convert 254 to hexadecimal:
+- 254 / 16 = 15, remainder 14 (E)
+- 15 / 16 = 0, remainder 15 (F)
+Result: FE
+
+Method 2: Subtraction (Powers of 16)
+
+Subtract powers of 16 to find the largest hex value in each position. This method is less common but helps with understanding computer processing.
+
+
+---
+
+Converting Hexadecimal to Decimal
+
+Method: Sum of Powers of 16
+
+Each hex digit represents a power of 16. Multiply each digit by 16^n, where n starts at 0 from the right. Add the results.
+
+Example: Convert 2F to decimal:
+2 x 16^1 + 15 x 16^0 = 47
+
+
+---
+
+Converting Binary to Hexadecimal
+
+Method: Group in Sets of 4 Bits
+
+Separate binary numbers into groups of 4 (from right to left), then convert each group to a hex digit.
+
+Example: Convert 11011110 to hexadecimal:
+Separate into groups: 1101 and 1110
+1101 = D, 1110 = E
+Result: DE
+
+
+---
+
+Converting Hexadecimal to Binary
+
+Method: Hex Digit to 4-Bit Binary
+
+Convert each hex digit to its 4-bit binary equivalent.
+
+Example: Convert A.C to binary:
+- Integer part: A = 1010
+- Fractional part: C = 1100
+Result: 1010.1100
+
+
+---
+
+Converting Decimal Numbers with Fractional Parts
+
+If a number has a fractional part, like 6.2, we convert the integer and fractional parts separately and then combine them.
+
+Decimal to Binary (Fractional Part)
+
+1. For the integer part, use division by 2.
+
+
+2. For the fractional part, multiply by 2 repeatedly, recording each integer result (0 or 1) as the next binary digit.
+
+
+3. Stop when you reach a repeating pattern or acceptable precision.
+
+
+
+Example: Convert 6.25 to binary:
+- Integer part: 6 in binary is 110
+- Fractional part: 0.25
+  - 0.25 x 2 = 0.5 → 0
+  - 0.5 x 2 = 1.0 → 1
+Result: 110.01
+
+Binary to Decimal (Fractional Part)
+
+Each binary digit to the right of the decimal represents a negative power of 2. Multiply each bit by 2^-n where n starts at 1 from the right.
+
+Example: Convert 110.01 to decimal:
+- Integer part: 1 x 2^2 + 1 x 2^1 + 0 x 2^0 = 6
+- Fractional part: 0 x 2^-1 + 1 x 2^-2 = 0 + 0.25
+Result: 6.25
+
+Decimal to Hexadecimal (Fractional Part)
+
+1. For the integer part, use division by 16.
+
+
+2. For the fractional part, multiply by 16 repeatedly, recording each integer result as the next hex digit.
+
+
+
+Example: Convert 10.75 to hexadecimal:
+- Integer part: 10 in hex is A
+- Fractional part: 0.75
+  - 0.75 x 16 = 12.0 → C
+Result: A.C
+
+Hexadecimal to Decimal (Fractional Part)
+
+Each hex digit to the right of the decimal represents a negative power of 16. Multiply each digit by 16^-n, where n starts at 1.
+
+Example: Convert A.C to decimal:
+- Integer part: A = 10
+- Fractional part: C x 16^-1 = 12 x 0.0625 = 0.75
+Result: 10.75
+
+
+---
+
+Summary of Conversions with Fractional Parts
+
+These methods cover conversions across binary, decimal, and hexadecimal, even with fractional parts, providing precise representations across bases.
